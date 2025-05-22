@@ -1,0 +1,31 @@
+
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+canvas {
+    background-color: #000;
+    border: 5px solid #007BFF;
+    box-shadow: 0 0 20px rgba(0,123,255,0.4);
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #007BFF;
+}
