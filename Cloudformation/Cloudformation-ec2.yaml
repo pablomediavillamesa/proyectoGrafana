@@ -24,9 +24,9 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
-          sudo apt update
+          sudo apt update -y 
           sudo git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
-          sudo cp -r proyecto-Grafana/Servidor-juegos ~/servidor-juegos
+          sudo cp -r proyectoGrafana/Servidor-juegos ~/servidor-juegos
           sudo chmod +x ~/servidor-juegos/despliegue-juegos.sh
           sudo ~/servidor-juegos/despliegue-juegos.sh
 
@@ -49,9 +49,9 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
-          sudo apt update
+          sudo apt update -y 
           sudo git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
-          sudo cp -r proyecto-Grafana/Servidor-monitor ~/servidor-monitor
+          sudo cp -r proyectoGrafana/Servidor-monitor ~/servidor-monitor
           sudo chmod +x ~/servidor-monitor/despliegue-monitor.sh
           sudo ~/servidor-monitor/despliegue-monitor.sh
 
@@ -72,10 +72,10 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
-          sudo apt update
+          sudo apt update -y 
           sudo git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
-          sudo cp -r proyecto-Grafana/Servidor-bd ~/servidor-bd
-          sudo chmod +x ~/servidor-db/install_configure_mysql.sh
+          sudo cp -r proyectoGrafana/Servidor-bd ~/servidor-bd
+          sudo chmod +x ~/servidor-bd/install_configure_mysql.sh
           sudo ~/servidor_db/install_configure_mysql.sh
 
 Outputs:
