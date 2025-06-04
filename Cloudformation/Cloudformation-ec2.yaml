@@ -21,9 +21,20 @@ Resources:
       Tags:
         - Key: Name
           Value: "proyectoGrafana-apache"
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          sudo apt update
+          sudo git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
+          sudo cp -r proyecto-Grafana/Servidor-juegos ~/servidor-juegos
+          sudo chmod +x ~/servidor-juegos/despliegue-juegos.sh
+          sudo ~/servidor-juegos/despliegue-juegos.sh
 
   EC2Monitoreo:
     Type: AWS::EC2::Instance
+    DependsOn:
+      - EC2Apache
+      - EC2BD
     Properties:
       InstanceType: t2.micro
       ImageId: ami-04b4f1a9cf54c11d0
@@ -35,6 +46,15 @@ Resources:
       Tags:
         - Key: Name
           Value: "proyectoGrafana-monitoreo"
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          sudo apt update
+          sudo git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
+          sudo cp -r proyecto-Grafana/Servidor-monitor ~/servidor-monitor
+          sudo chmod +x ~/servidor-monitor/despliegue-monitor.sh
+          sudo ~/servidor-monitor/despliegue-monitor.sh
+
 
   EC2BD:
     Type: AWS::EC2::Instance
@@ -49,9 +69,14 @@ Resources:
       Tags:
         - Key: Name
           Value: "proyectoGrafana-bd"
-
-
-
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          sudo apt update
+          sudo git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
+          sudo cp -r proyecto-Grafana/Servidor-bd ~/servidor-bd
+          sudo chmod +x ~/servidor-db/install_configure_mysql.sh
+          sudo ~/servidor_db/install_configure_mysql.sh
 
 Outputs:
 
