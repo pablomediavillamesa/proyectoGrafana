@@ -3,16 +3,16 @@
 set -e  # Detiene la ejecución si ocurre un error
 
 # === Nombres de los stacks ===
-STACK_VPC="Cloudformation-vpc"
-STACK_SG="Cloudformation-sg"
-STACK_EC2="Cloudformation-ec2"
+STACK_VPC="Cloudformation-VPC"
+STACK_SG="Cloudformation-SG"
+STACK_EC2="Cloudformation-EC2"
 KEY_NAME="proyectoGrafanaKey"
 KEY_FILE="${KEY_NAME}.pem"
 
 # === Archivos YAML ===
-VPC_FILE="../CloudFormation/Cloudformation-vpc.yaml"
-SG_FILE="../CloudFormation/Cloudformation-sg.yaml"
-EC2_FILE="../CloudFormation/Cloudformation-ec2.yaml"
+VPC_FILE="Cloudformation-vpc.yaml"
+SG_FILE="Cloudformation-sg.yaml"
+EC2_FILE="Cloudformation-ec2.yaml"
 
 # === Opción --force-redeploy ===
 FORCE_REDEPLOY=false
