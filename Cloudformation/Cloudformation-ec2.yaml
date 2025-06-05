@@ -6,43 +6,38 @@ Parameters:
     Type: String
     Description: "Nombre de la clave SSH para acceder a las instancias"
 
-EC2Apache:
-  Type: AWS::EC2::Instance
-  Properties:
-    InstanceType: t2.micro
-    ImageId: ami-04b4f1a9cf54c11d0
-    KeyName: !Ref KeyName
-    SubnetId: !ImportValue proyectoGrafana-SubnetPublic-ID
-    SecurityGroupIds:
-      - !ImportValue proyectoGrafana-SG-Apache-ID
-    PrivateIpAddress: 172.20.1.50
-    Tags:
-      - Key: Name
-        Value: "proyectoGrafana-apache"
-    UserData:
-      Fn::Base64: !Sub |
-        #!/bin/bash -xe
-        exec > /var/log/user-data.log 2>&1
+Resources:
 
-        apt update -y
-        apt install -y git
-
-        touch /home/ubuntu/prueba1.txt
-        echo "esto es un prueba" > /home/ubuntu/prueba1.txt
-        chown ubuntu:ubuntu /home/ubuntu/prueba1.txt
-
-        cd /home/ubuntu
-        git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
-        cp -r proyectoGrafana/servidor-juegos servidor-juegos/
-        cd servidor-juegos
-        chmod +x despliegue-juegos.sh
-
-        # Crear cron que ejecuta el script solo una vez al arranque
-        echo '@reboot root [ -f /etc/firstboot.done ] || ( /home/ubuntu/servidor-juegos/despliegue-juegos.sh && echo "finalizado" >> /home/ubuntu/prueba1.txt && touch /etc/firstboot.done )' > /etc/cron.d/deploy-once
-        chmod 644 /etc/cron.d/deploy-once
-
-        # Reiniciar para que el cron se ejecute en el primer arranque real
-        reboot
+  EC2Apache:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-04b4f1a9cf54c11d0
+      KeyName: !Ref KeyName
+      SubnetId: !ImportValue proyectoGrafana-SubnetPublic-ID
+      SecurityGroupIds:
+        - !ImportValue proyectoGrafana-SG-Apache-ID
+      PrivateIpAddress: 172.20.1.50
+      Tags:
+        - Key: Name
+          Value: "proyectoGrafana-apache"
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -xe
+          exec > /var/log/user-data.log 2>&1
+          apt update -y
+          apt install -y git
+          touch /home/ubuntu/prueba1.txt
+          echo "esto es un prueba" > /home/ubuntu/prueba1.txt
+          chown ubuntu:ubuntu /home/ubuntu/prueba1.txt
+          cd /home/ubuntu
+          git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
+          cp -r proyectoGrafana/Servidor-juegos servidor-juegos/
+          cd servidor-juegos
+          chmod +x despliegue-juegos.sh
+          echo '@reboot root [ -f /etc/firstboot.done ] || ( /home/ubuntu/servidor-juegos/despliegue-juegos.sh && echo "finalizado" >> /home/ubuntu/prueba1.txt && touch /etc/firstboot.done )' > /etc/cron.d/deploy-once
+          chmod 644 /etc/cron.d/deploy-once
+          reboot
 
   EC2Monitoreo:
     Type: AWS::EC2::Instance
@@ -64,28 +59,19 @@ EC2Apache:
         Fn::Base64: !Sub |
           #!/bin/bash -xe
           exec > /var/log/user-data.log 2>&1
-
           apt update -y
           apt install -y git
-
           touch /home/ubuntu/prueba1.txt
           echo "esto es un prueba" > /home/ubuntu/prueba1.txt
           chown ubuntu:ubuntu /home/ubuntu/prueba1.txt
-
           cd /home/ubuntu
           git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
           cp -r proyectoGrafana/servidor-monitor servidor-monitor/
           cd servidor-monitor
           chmod +x despliegue-monitor.sh
-
-          # Crear cron que ejecuta el script solo una vez al arranque
           echo '@reboot root [ -f /etc/firstboot.done ] || ( /home/ubuntu/servidor-monitor/despliegue-monitor.sh && echo "finalizado" >> /home/ubuntu/prueba1.txt && touch /etc/firstboot.done )' > /etc/cron.d/deploy-once
           chmod 644 /etc/cron.d/deploy-once
-
-          # Reiniciar para que el cron se ejecute en el primer arranque real
           reboot
-
-
 
   EC2BD:
     Type: AWS::EC2::Instance
@@ -104,21 +90,17 @@ EC2Apache:
         Fn::Base64: !Sub |
           #!/bin/bash -xe
           exec > /var/log/user-data.log 2>&1
-
-          sudo apt update -y
+          apt update -y
+          apt install -y git
           touch /home/ubuntu/prueba1.txt
           echo "esto es un prueba" > /home/ubuntu/prueba1.txt
-
           cd /home/ubuntu
           git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
-
           cp -r proyectoGrafana/Servidor-bd servidor-bd/
-          cd /home/ubuntu/servidor-bd
-
+          cd servidor-bd
           chmod +x install_configure_mysql.sh
           ./install_configure_mysql.sh
 
-          
 Outputs:
 
   EC2ApacheID:
