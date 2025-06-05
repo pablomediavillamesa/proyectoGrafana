@@ -35,19 +35,6 @@ check_exec() {
     fi
 }
 
-restaurar_volumen() {
-    local VOLUMEN="$1"
-    local ARCHIVO="$2"
-    if [[ -f "$ARCHIVO" ]]; then
-        log "Restaurando volumen Docker '$VOLUMEN' desde '$ARCHIVO'..."
-        docker volume inspect "$VOLUMEN" >/dev/null 2>&1 || docker volume create "$VOLUMEN"
-        docker run --rm -v "$VOLUMEN":/data -v "$(dirname "$ARCHIVO")":/backup busybox sh -c "cd /data && tar xzf /backup/$(basename "$ARCHIVO")"
-        log "Volumen '$VOLUMEN' restaurado correctamente."
-    else
-        log "[WARN] No se encontró el backup '$ARCHIVO' para el volumen '$VOLUMEN', se omite restauración."
-    fi
-}
-
 # === EJECUCIÓN PRINCIPAL ===
 main() {
     log "Verificando scripts..."
@@ -59,11 +46,6 @@ main() {
     "$DOCKER_SCRIPT"
     log "Ejecutando script de instalación de Node Exporter..."
     "$NODE_EXPORTER_SCRIPT"
-
-    # === Restaurar volúmenes desde backups comprimidos ===
-    VOLUMES_DIR="./volumes"
-    restaurar_volumen "alertmanager_data" "$VOLUMES_DIR/backup_alertmanager_data.tar.gz"
-    restaurar_volumen "grafana_data" "$VOLUMES_DIR/backup_grafana_data.tar.gz"
 
     if [[ -f "$DOCKER_COMPOSE_FILE" ]]; then
         log "Levantando contenedores con Docker Compose..."
