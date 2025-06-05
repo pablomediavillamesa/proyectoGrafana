@@ -5,7 +5,7 @@ echo "==== INICIO EJECUCIÓN METRICS-TO-DB.PHP: $now ====\n";
 
 
 // Configuración de conexión a la base MySQL
-$host = '192.168.4.33'; // Cambia por la IP de tu servidor
+$host = '172.20.2.10'; // Cambia por la IP de tu servidor
 $db = 'monitoring';     // Nombre de la base de datos
 $user = 'pablom';       // Usuario con permisos
 $pass = 'pablom';       // Contraseña del usuario
