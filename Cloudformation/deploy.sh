@@ -6,7 +6,7 @@ set -e  # Detiene la ejecución si ocurre un error
 STACK_VPC="Cloudformation-VPC"
 STACK_SG="Cloudformation-SG"
 STACK_EC2="Cloudformation-EC2"
-KEY_NAME="proyectoGrafanaKey"
+KEY_NAME="ola"
 KEY_FILE="${KEY_NAME}.pem"
 
 # === Archivos YAML ===
