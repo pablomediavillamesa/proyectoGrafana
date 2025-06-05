@@ -30,5 +30,5 @@ services:
       - prometheus
 
 volumes:
-  servidor-monitor_alertmanager_data:
-  servidor-monitor_grafana_data:
+  alertmanager_data:
+  grafana_data:
