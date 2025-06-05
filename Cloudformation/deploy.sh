@@ -3,9 +3,9 @@
 set -e  # Detiene la ejecución si ocurre un error
 
 # === Nombres de los stacks ===
-STACK_VPC="proyectoGrafana-vpc"
-STACK_SG="proyectoGrafana-sg"
-STACK_EC2="proyectoGrafana-ec2"
+STACK_VPC="Cloudformation-VPC"
+STACK_SG="Cloudformation-SG"
+STACK_EC2="Cloudformation-EC2"
 KEY_NAME="proyectoGrafanaKey"
 KEY_FILE="${KEY_NAME}.pem"
 
