@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sensei corta fruta</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Fruit Slicer</h1>
+    </header>
+
+    <main>
+        <div class="game-page">
+            <!-- TODO lo de game-container va aquí intacto -->
+            <div id="container">
+                <div id="instructions">Corta Frutas</div>
+                <div id="fruitcontainer">
+                    <div id="score">
+                        <div class="scoreDisplay"><span id="scoreValue">0</span></div>
+                    </div>
+                    <div id="trialsleft"></div>
+                    <div id="front">
+                        Estas preparado para cortar fruta sensei?<br />
+                        <img src="https://raw.githubusercontent.com/Saumya-07/Fruit-Slicer/master/images/splash.png" alt="Fruit logo"/>
+                    </div>
+                    <img id="fruit1" class="fruit"/>
+                </div>
+                <div id="startReset">Start Game</div>
+                <div id="gameOver"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+	<a href="flappy-bird/index.html" class="play-button">Página de Incio</a>
+        <p>© 2025 - Juego Fruit Slicer creado por Ti 🚀</p>
+    </footer>
+
+    <audio id="slicesound">
+        <source src="https://github.com/Saumya-07/Fruit-Slicer/blob/master/audio/slicefruit.mp3" />
+        <source src="https://github.com/Saumya-07/Fruit-Slicer/blob/master/audio/slicefruit.ogg" />
+        <source src="https://github.com/Saumya-07/Fruit-Slicer/blob/master/audio/slicefruit.wav" />
+    </audio>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

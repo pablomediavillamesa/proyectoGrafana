@@ -32,7 +32,7 @@ Resources:
           chown ubuntu:ubuntu /home/ubuntu/prueba1.txt
           cd /home/ubuntu
           git clone https://github.com/pablomediavillamesa/proyectoGrafana.git
-          cp -r proyectoGrafana/Servidor-juegos servidor-juegos/
+          cp -r proyectoGrafana/servidor-juegos servidor-juegos/
           cd servidor-juegos
           chmod +x despliegue-juegos.sh
           echo '@reboot root [ -f /etc/firstboot.done ] || ( /home/ubuntu/servidor-juegos/despliegue-juegos.sh && echo "finalizado" >> /home/ubuntu/prueba1.txt && touch /etc/firstboot.done )' > /etc/cron.d/deploy-once
