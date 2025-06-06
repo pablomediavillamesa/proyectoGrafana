@@ -929,7 +929,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "${DS_MYSQL}"
+        "uid": "DS_MYSQL"
       },
       "fieldConfig": {
         "defaults": {
@@ -985,7 +985,7 @@
           "dataset": "monitoring",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "DS_MYSQL"
           },
           "editorMode": "code",
           "format": "table",
@@ -1017,7 +1017,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "${DS_MYSQL}"
+        "uid": "DS_MYSQL"
       },
       "fieldConfig": {
         "defaults": {
@@ -1072,7 +1072,7 @@
           "dataset": "monitoring",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "DS_MYSQL"
           },
           "editorMode": "code",
           "format": "table",
@@ -1104,7 +1104,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "${DS_MYSQL}"
+        "uid": "DS_MYSQL"
       },
       "fieldConfig": {
         "defaults": {
@@ -1159,7 +1159,7 @@
           "dataset": "monitoring",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "DS_MYSQL"
           },
           "editorMode": "code",
           "format": "table",
@@ -1191,7 +1191,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "${DS_MYSQL}"
+        "uid": "DS_MYSQL"
       },
       "fieldConfig": {
         "defaults": {
@@ -1246,7 +1246,7 @@
           "dataset": "monitoring",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "DS_MYSQL"
           },
           "editorMode": "code",
           "format": "table",
@@ -1278,7 +1278,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "${DS_MYSQL}"
+        "uid": "DS_MYSQL"
       },
       "fieldConfig": {
         "defaults": {
@@ -1333,7 +1333,7 @@
           "dataset": "monitoring",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "DS_MYSQL"
           },
           "editorMode": "code",
           "format": "table",
