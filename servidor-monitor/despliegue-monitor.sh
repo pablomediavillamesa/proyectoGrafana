@@ -16,6 +16,7 @@ cd "$(dirname "$0")"
 DOCKER_SCRIPT="./instalacion-docker.sh"
 NODE_EXPORTER_SCRIPT="./node-exporter-install.sh"
 DOCKER_COMPOSE_FILE="./docker-compose.yml"
+DNS_SCRIPT="./dns.sh"
 
 # === FUNCIONES DE UTILIDAD ===
 check_file() {
@@ -53,6 +54,19 @@ main() {
     else
         log "[WARN] docker-compose.yml no encontrado, se omite docker compose up"
     fi
+
+    # === EJECUTAR DNS.sh AL FINAL ===
+    check_file "$DNS_SCRIPT"
+    check_exec "$DNS_SCRIPT"
+    log "Ejecutando script de actualización DuckDNS..."
+    "$DNS_SCRIPT"
+    if [[ $? -eq 0 ]]; then
+        log "[OK] dns.sh ejecutado correctamente"
+    else
+        log "[ERROR] Falló la ejecución de dns.sh"
+        exit 1
+    fi
+
     log "Despliegue completado correctamente"
 }
 
