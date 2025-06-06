@@ -20,6 +20,8 @@ TFG_WEB_DEST="/var/www/tfgweb"
 CRON_FILE="/etc/cron.d/metrics_db_cron"
 CRON_CMD="/usr/bin/php $ROOT_DIR/sql_export/metrics-to-db.php"
 METRICS_GENERATOR="$ROOT_DIR/metrics-generator.sh"
+DNS_SCRIPT="$ROOT_DIR/dns.sh"
+TLS_SCRIPT="$ROOT_DIR/tls.sh"
 
 # === COMPROBAR ROOT ===
 require_root() {
@@ -110,6 +112,29 @@ main() {
     deploy_web
     setup_cron
     run_generator
+
+    # === CONFIGURAR DNS AUTOMÁTICAMENTE ===
+    check_exec "$DNS_SCRIPT"
+    log "[INFO] Ejecutando configuración automática de DNS (DuckDNS)"
+    "$DNS_SCRIPT"
+    if [[ $? -eq 0 ]]; then
+        log "[OK] dns.sh ejecutado correctamente"
+    else
+        log "[ERROR] Falló la ejecución de dns.sh"
+        exit 1
+    fi
+
+    # === CONFIGURAR TLS AUTOMÁTICAMENTE ===
+    check_exec "$TLS_SCRIPT"
+    log "[INFO] Ejecutando configuración automática de TLS/Let's Encrypt"
+    "$TLS_SCRIPT"
+    if [[ $? -eq 0 ]]; then
+        log "[OK] tls.sh ejecutado correctamente"
+    else
+        log "[ERROR] Falló la ejecución de tls.sh"
+        exit 1
+    fi
+
     log "[FIN] Despliegue completado correctamente"
 }
 
