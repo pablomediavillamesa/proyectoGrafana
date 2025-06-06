@@ -21,8 +21,8 @@ groups:
         alertname: "NewRecordFlappy"
         game: "flappy"
       annotations:
-        summary: "🎮 ¡Nuevo récord en flappy!"
-        description: "El nuevo récord en flappy es {{ $value }} puntos."
+        summary: "🎮 ¡Nueva puntuación en flappy!"
+        description: "Nueva puntuación en flappy de {{ $value }} puntos."
 
     - alert: NewRecordFruit
       expr: new_record{game="fruit"} > 0
@@ -32,5 +32,6 @@ groups:
         alertname: "NewRecordFruit"
         game: "fruit"
       annotations:
-        summary: "🎮 ¡Nuevo récord en fruit!"
-        description: "El nuevo récord en fruit es {{ $value }} puntos."
+        summary: "🎮 ¡Nueva puntuación en fruit!"
+        description: "Nueva puntuación en flappy de {{ $value }} puntos."
+        
