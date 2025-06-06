@@ -1,7 +1,7 @@
 apiVersion: 1
 
 datasources:
-  - name: MySQL Monitoring
+  - name: DS_MYSQL 
     type: mysql
     access: proxy
     url: 172.20.2.10:3306
@@ -13,7 +13,7 @@ datasources:
     jsonData:
       tlsSkipVerify: true
 
-  - name: Prometheus
+  - name: DS_PROMETHEUS
     type: prometheus
     access: proxy
     url: http://172.20.1.100:9090
